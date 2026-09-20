@@ -18,12 +18,12 @@ html,body{min-height:100%;color:var(--ink);font-family:Syne,system-ui,sans-serif
 a{color:var(--gold);text-decoration:none}
 .page-bg{
   position:fixed;inset:0;z-index:0;
-  background:#120c14 center 22%/cover no-repeat;
+  background:#120c14 center 18%/cover no-repeat;
 }
 .page-bg::after{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(12,8,14,.05) 0%,rgba(12,8,14,.08) 42%,rgba(12,8,14,.32) 100%),
+    linear-gradient(180deg,rgba(8,6,10,.02) 0%,rgba(8,6,10,.08) 50%,rgba(8,6,10,.38) 100%),
     radial-gradient(70% 50% at 50% 100%,rgba(8,5,10,.18),transparent 72%);
 }
 .wrap{position:relative;z-index:2}
@@ -166,14 +166,14 @@ textarea{min-height:110px;resize:vertical}
 </footer>
 </div>
 <script>
-Promise.all(['bg0.b64','bg1.b64','bg2.b64','bg3.b64'].map(p=>fetch(p+'?v=3').then(r=>r.text())))
+Promise.all([0,1,2,3,4,5,6,7,8,9].map(i=>fetch('p'+i+'.b64?v=5').then(r=>{if(!r.ok)throw 0;return r.text()})))
 .then(parts=>{
   const t=parts.join('').replace(/\s+/g,'');
   const el=document.querySelector('.page-bg');
   if(!el) return;
   el.style.backgroundImage='url("data:image/jpeg;base64,'+t+'")';
   el.style.backgroundSize='cover';
-  el.style.backgroundPosition='center 22%';
+  el.style.backgroundPosition='center 18%';
   el.style.backgroundRepeat='no-repeat';
 }).catch(()=>{});
 const TARGET = new Date('2026-10-23T18:00:00+02:00').getTime();
