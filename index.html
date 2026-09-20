@@ -20,13 +20,13 @@ html,body{min-height:100%;color:var(--ink);font-family:Syne,system-ui,sans-serif
 a{color:var(--gold);text-decoration:none}
 .page-bg{
   position:fixed;inset:0;z-index:0;
-  background:#120c14 url('https://raw.githubusercontent.com/Pete5s/Pete5s.github.io/main/bg.jpg') center 28%/cover no-repeat;
+  background:#120c14 center 20%/cover no-repeat;
 }
 .page-bg::after{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(12,8,14,.18) 0%,rgba(12,8,14,.22) 38%,rgba(12,8,14,.42) 100%),
-    radial-gradient(70% 50% at 50% 100%,rgba(8,5,10,.35),transparent 70%);
+    linear-gradient(180deg,rgba(12,8,14,.06) 0%,rgba(12,8,14,.10) 45%,rgba(12,8,14,.36) 100%),
+    radial-gradient(70% 50% at 50% 100%,rgba(8,5,10,.22),transparent 72%);
 }
 .wrap{position:relative;z-index:2}
 .hero{min-height:100svh;display:grid;place-items:end center}
@@ -168,6 +168,10 @@ textarea{min-height:110px;resize:vertical}
 </footer>
 </div>
 <script>
+fetch('bg.b64').then(r=>r.ok?r.text():Promise.reject()).then(t=>{
+  const el=document.querySelector('.page-bg');
+  if(el) el.style.backgroundImage=`url("data:image/jpeg;base64,${t.trim()}")`;
+}).catch(()=>{});
 const TARGET = new Date('2026-10-23T18:00:00+02:00').getTime();
 const STORE = 'https://api.npoint.io/6536acf6e6e28e0e6288';
 const $ = id => document.getElementById(id);
