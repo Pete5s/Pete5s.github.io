@@ -19,7 +19,7 @@ html,body{min-height:100%;color:var(--ink);font-family:Syne,system-ui,sans-serif
 a{color:var(--gold);text-decoration:none}
 .page-bg{
   position:fixed;inset:0;z-index:0;
-  background:#1a1018 center 18%/cover no-repeat fixed;
+  background:#1a1018 url("https://litter.catbox.moe/orox0n.jpg") center 18%/cover no-repeat fixed;
 }
 .page-bg::after{
   content:"";position:absolute;inset:0;pointer-events:none;
@@ -170,18 +170,11 @@ textarea{min-height:110px;resize:vertical}
 (function loadBackground(){
   const el = document.querySelector('.page-bg');
   if(!el) return;
-  const apply = (b64) => {
-    el.style.backgroundImage = 'url("data:image/jpeg;base64,' + b64 + '")';
-    el.style.backgroundSize = 'cover';
-    el.style.backgroundPosition = 'center 18%';
-    el.style.backgroundRepeat = 'no-repeat';
-    el.style.backgroundAttachment = 'fixed';
-  };
-  const hi = ['p0.b64','p1.b64','p2.b64','p3.b64','p4.b64','p5.b64','p6.b64','p7.b64'];
-  const lo = ['bg0.b64','bg1.b64','bg2.b64','bg3.b64'];
-  const load = (files) => Promise.all(files.map(p => fetch(p + '?v=8').then(r => { if(!r.ok) throw 0; return r.text(); })))
-    .then(chunks => apply(chunks.join('').replace(/\s+/g,'')));
-  load(hi).catch(() => load(lo).catch(()=>{}));
+  el.style.backgroundImage = 'url("https://litter.catbox.moe/orox0n.jpg")';
+  el.style.backgroundSize = 'cover';
+  el.style.backgroundPosition = 'center 18%';
+  el.style.backgroundRepeat = 'no-repeat';
+  el.style.backgroundAttachment = 'fixed';
 })();
 const TARGET = new Date('2026-10-23T18:00:00+02:00').getTime();
 const STORE = 'https://api.npoint.io/6536acf6e6e28e0e6288';
