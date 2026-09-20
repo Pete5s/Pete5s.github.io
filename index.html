@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>23.10.2026 · Narozeninová party · Mexická Holešovice</title>
 <meta name="theme-color" content="#07060a" />
-<meta property="og:title" content="23.10.2026 · Narozeninová party · Mexická Holešovice" />
-<meta property="og:description" content="Pátek 23. října 2026, 18:00, Mexická Holešovice. Živé tablo — zápis i vzkazy sdílí všichni." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
@@ -20,13 +18,13 @@ html,body{min-height:100%;color:var(--ink);font-family:Syne,system-ui,sans-serif
 a{color:var(--gold);text-decoration:none}
 .page-bg{
   position:fixed;inset:0;z-index:0;
-  background:#120c14 center 20%/cover no-repeat;
+  background:#120c14 center 22%/cover no-repeat;
 }
 .page-bg::after{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(12,8,14,.06) 0%,rgba(12,8,14,.10) 45%,rgba(12,8,14,.36) 100%),
-    radial-gradient(70% 50% at 50% 100%,rgba(8,5,10,.22),transparent 72%);
+    linear-gradient(180deg,rgba(12,8,14,.05) 0%,rgba(12,8,14,.08) 42%,rgba(12,8,14,.32) 100%),
+    radial-gradient(70% 50% at 50% 100%,rgba(8,5,10,.18),transparent 72%);
 }
 .wrap{position:relative;z-index:2}
 .hero{min-height:100svh;display:grid;place-items:end center}
@@ -168,9 +166,15 @@ textarea{min-height:110px;resize:vertical}
 </footer>
 </div>
 <script>
-fetch('bg.b64').then(r=>r.ok?r.text():Promise.reject()).then(t=>{
+Promise.all(['bg0.b64','bg1.b64','bg2.b64','bg3.b64'].map(p=>fetch(p+'?v=3').then(r=>r.text())))
+.then(parts=>{
+  const t=parts.join('').replace(/\s+/g,'');
   const el=document.querySelector('.page-bg');
-  if(el) el.style.backgroundImage=`url("data:image/jpeg;base64,${t.trim()}")`;
+  if(!el) return;
+  el.style.backgroundImage='url("data:image/jpeg;base64,'+t+'")';
+  el.style.backgroundSize='cover';
+  el.style.backgroundPosition='center 22%';
+  el.style.backgroundRepeat='no-repeat';
 }).catch(()=>{});
 const TARGET = new Date('2026-10-23T18:00:00+02:00').getTime();
 const STORE = 'https://api.npoint.io/6536acf6e6e28e0e6288';
